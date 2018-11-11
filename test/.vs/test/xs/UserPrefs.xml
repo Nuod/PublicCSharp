@@ -1,0 +1,21 @@
+﻿<Properties StartupConfiguration="{DEB8B12A-99A7-4D21-9B31-CF52762BFA8C}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="test/input1.txt">
+    <Files>
+      <File FileName="test/Program.cs" Line="6" Column="6" />
+      <File FileName="test/Boat.cs" Line="30" Column="4" />
+      <File FileName="test/GameMaster.cs" Line="90" Column="4" />
+      <File FileName="test/Player.cs" Line="106" Column="7" />
+      <File FileName="test/Ships.cs" Line="26" Column="6" />
+      <File FileName="test/pair.cs" Line="9" Column="10" />
+      <File FileName="test/input1.txt" Line="1" Column="1" />
+      <File FileName="test/input2.txt" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.ItemProperties.test PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
