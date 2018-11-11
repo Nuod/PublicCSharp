@@ -5,7 +5,7 @@ namespace BatleShips
 {
 	public class ParseString
 	{
-		public void ParseShip(StreamReader file)
+		public static Dictionary<Tuple<int, int>, Boat> ParseShip(StreamReader file)
 		{
 			var ShipsKit = new Dictionary<Tuple<int, int>, Boat>();
 			while(file.Peek() != -1)
@@ -21,9 +21,10 @@ namespace BatleShips
 					ShipsKit.Add(SList[i], Boat);
 				}
 			}
+			return ShipsKit;
 
 		}
-		private List<Tuple<int,int>> FormatList(Tuple<int,int> Cbegin, Tuple<int, int> Cend)
+		private static List<Tuple<int,int>> FormatList(Tuple<int,int> Cbegin, Tuple<int, int> Cend)
 		{
 			var Cships = new List<Tuple<int, int>>();
 			if ((Cbegin.Item1 - Cend.Item1) == 0)

@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 namespace BatleShips
 {
     public class Player
     {
 		public string name { get; set; }
 		Dictionary<Tuple<int, int>, Boat> PlayersShips;
-		Dictionary<int, int> missFair;
+		Dictionary<Tuple<int, int>, char> missFair;
 		Dictionary<Tuple<int, int>, char> enemyField;
 
-		public Player(string name)
+		public Player(string name,string path)
         {
 			this.name = name;
-			PlayersShips = GenerateShips.Generate();
+			PlayersShips = ParseString.ParseShip(new StreamReader(path));
+			missFair = new Dictionary<Tuple<int, int>, char>();
+			enemyField = new Dictionary<Tuple<int, int>, char>();
 
         }
 
@@ -24,20 +27,20 @@ namespace BatleShips
 				if(kvp.Key == coordinate)
 				{
 					
-					missFair.Add(coordinate.Item1,coordinate.Item2);
+					missFair.Add(coordinate,'X'); 
 					PlayersShips.Remove(coordinate);
 					return new Answer(PlayersShips.Count == 0, kvp.Value.doHit(), false);
 
 				}
 			}
-			foreach(KeyValuePair<int,int> kvp in missFair)
+			foreach(KeyValuePair<Tuple<int, int>, char> kvp in missFair)
 			{
-				if(kvp.Key == coordinate.Item1 && kvp.Value == coordinate.Item2)
+				if(kvp.Key == coordinate)
 				{
 					return new Answer(false, -2, true);
 				}
 			}
-			missFair.Add(coordinate.Item1, coordinate.Item2);
+			missFair.Add(coordinate,'*');
 			return new Answer(false, -3, false);
 		}
 
@@ -77,5 +80,42 @@ namespace BatleShips
 
 		
 		}
+		public void Draw()
+		{
+			var field = new char[Const.WidthField, Const.LenghtField];
+			var enemy = new char[Const.WidthField, Const.LenghtField];
+			for (int i = 0; i < Const.WidthField; i++)
+				for (int j = 0; j < Const.LenghtField; j++)
+				{
+					field[i, j] = '~';
+					enemy[i, j] = '~';
+				}
+			foreach(var kvp in PlayersShips)
+			{
+				field[kvp.Key.Item1, kvp.Key.Item2] = 'O';
+			}
+
+				foreach (var kvp in missFair)
+				{
+					field[kvp.Key.Item1, kvp.Key.Item2] = kvp.Value;
+				}
+            
+
+				foreach (var kvp in enemyField)
+				{
+					enemy[kvp.Key.Item1, kvp.Key.Item2] = kvp.Value;
+				}
+			
+			for (int i = 0; i < Const.WidthField; i++)
+			{
+				for (int j = 0; j < Const.LenghtField; j++)
+					Console.Write(" {0} ",field[i,j]);
+				Console.Write(" | ");
+				for (int j = 0; j < Const.LenghtField; j++)
+					Console.Write(" {0} ", enemy[i,j]);
+				Console.WriteLine();
+				}	
+		}
+
     }
 }

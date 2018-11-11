@@ -1,0 +1,6 @@
+/home/nuuduha/Code/C#/BatleShips/BatleShips/bin/Debug/BatleShips.exe
+/home/nuuduha/Code/C#/BatleShips/BatleShips/bin/Debug/BatleShips.pdb
+/home/nuuduha/Code/C#/BatleShips/BatleShips/obj/x86/Debug/BatleShips.csprojResolveAssemblyReference.cache
+/home/nuuduha/Code/C#/BatleShips/BatleShips/obj/x86/Debug/BatleShips.csproj.CoreCompileInputs.cache
+/home/nuuduha/Code/C#/BatleShips/BatleShips/obj/x86/Debug/BatleShips.exe
+/home/nuuduha/Code/C#/BatleShips/BatleShips/obj/x86/Debug/BatleShips.pdb
