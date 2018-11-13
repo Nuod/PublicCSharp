@@ -1,15 +1,15 @@
 ﻿<Properties StartupConfiguration="{BFF9DA48-0C71-4C2C-A3C3-5295D3AE0D58}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="BatleShips/Game.cs">
     <Files>
-      <File FileName="BatleShips/Program.cs" Line="9" Column="47" />
+      <File FileName="BatleShips/Program.cs" Line="13" Column="1" />
       <File FileName="BatleShips/Const.cs" Line="14" Column="2" />
-      <File FileName="BatleShips/Boat.cs" Line="68" Column="23" />
-      <File FileName="BatleShips/Player.cs" Line="17" Column="10" />
+      <File FileName="BatleShips/Game.cs" Line="14" Column="1" />
+      <File FileName="BatleShips/Boat.cs" Line="10" Column="29" />
+      <File FileName="BatleShips/Player.cs" Line="16" Column="1" />
       <File FileName="BatleShips/Answer.cs" Line="16" Column="6" />
-      <File FileName="BatleShips/ParseInput.cs" Line="10" Column="59" />
+      <File FileName="BatleShips/ParseInput.cs" Line="25" Column="4" />
       <File FileName="BatleShips/InputShips2.txt" Line="10" Column="8" />
       <File FileName="BatleShips/InputShips1.txt" Line="10" Column="8" />
-      <File FileName="BatleShips/Game.cs" Line="7" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
@@ -18,5 +18,5 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.BatleShips PreferredExecutionTarget="MonoDevelop.Default" FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.BatleShips PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>

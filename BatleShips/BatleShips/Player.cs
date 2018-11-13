@@ -24,7 +24,7 @@ namespace BatleShips
 			
 			foreach(KeyValuePair<Tuple<int, int>, Boat> kvp in PlayersShips)
 			{
-				if(kvp.Key == coordinate)
+				if(kvp.Key.Equals(coordinate))
 				{
 					
 					missFair.Add(coordinate,'X'); 
@@ -35,7 +35,7 @@ namespace BatleShips
 			}
 			foreach(KeyValuePair<Tuple<int, int>, char> kvp in missFair)
 			{
-				if(kvp.Key == coordinate)
+				if(kvp.Key.Equals(coordinate))
 				{
 					return new Answer(false, -2, true);
 				}
@@ -44,41 +44,54 @@ namespace BatleShips
 			return new Answer(false, -3, false);
 		}
 
-		public void doHit(Player enemy)
+		public bool doHit(Player enemy)
 		{
 			Answer hit;
 			int x, y;
 			do
 			{
+				Console.WriteLine(this.name + " strike:");
 				Console.WriteLine("Input X");
-				x = Int32.Parse(Console.ReadLine());
+				string s = Console.ReadLine();
+				if(s == "D")
+				{
+					this.Draw();
+					Console.WriteLine("Input X");
+					s = Console.ReadLine();
+				}
+
+				x = Int32.Parse(s);
 				Console.WriteLine("Input Y");
 				y = Int32.Parse(Console.ReadLine());
 				hit = enemy.getHit(new Tuple<int, int>(x, y));
-			} while (!hit.failFair);
+				switch (hit.status)
+                {
+                    case -3: { 
+							Console.WriteLine("Miss");
+							enemyField.Add(new Tuple<int, int>(x, y), '*');
+							break; 
+						}
+					case -2: { 
+							Console.WriteLine("Try again!"); 
+							break; }
+                    case -1: { 
+							Console.WriteLine("Die "); 
+							enemyField.Add(new Tuple<int, int>(x, y), 'X');
+							break; 
+						}
+                    case  0: { 
+							Console.WriteLine("Hurt"); 
+							enemyField.Add(new Tuple<int, int>(x, y), 'X');
+							break; }
+                }
+			} while ((hit.failFair || hit.status != -3) && !hit.lose);
 			if(hit.lose)
 			{
-				Console.WriteLine("Win");
-				return;
+				Console.WriteLine(this.name+"Win");
+				return true;
 			}
-			switch (hit.status)
-			{
-				case -3: { Console.WriteLine("Miss"); break;}
-				case -1: { Console.WriteLine("Die ");  break;}
-				case  0: { Console.WriteLine("Hurt"); break;}
-			}
-
-			if(hit.status == 0)
-			{
-				enemyField.Add(new Tuple<int, int>(x, y), 'X');
-			}
-			else
-			{
-				enemyField.Add(new Tuple<int, int>(x, y), '*');
-			}
-
-
-		
+			return false;
+            
 		}
 		public void Draw()
 		{
